@@ -41,7 +41,13 @@ set_target_properties(
 set(MINGW64_BIN ${OPENMODELICA_HOME}/tools/msys/mingw64/bin)
 
 add_custom_target(
-	mock_def ALL
+	mock_def
 	COMMAND ${MINGW64_BIN}/gendef ${LIBRARY_MINGW64}/mock.dll
 	DEPENDS mock
+)
+
+add_custom_target(
+	mock_dll_a ALL
+	COMMAND ${MINGW64_BIN}/dlltool -d${LIBRARY_MINGW64}/mock.def -l${LIBRARY_MINGW64}/mock.dll.a
+	DEPENDS mock_def
 )
