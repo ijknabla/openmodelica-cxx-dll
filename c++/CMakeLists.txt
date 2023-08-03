@@ -42,7 +42,7 @@ set(MINGW64_BIN ${OPENMODELICA_HOME}/tools/msys/mingw64/bin)
 
 add_custom_target(
 	mock_def
-	COMMAND ${MINGW64_BIN}/gendef ${LIBRARY_MINGW64}/mock.dll
+	COMMAND ${MINGW64_BIN}/gendef ${LIBRARY_MINGW64}/mock.dll - > ${LIBRARY_MINGW64}/mock.def
 	DEPENDS mock
 )
 
