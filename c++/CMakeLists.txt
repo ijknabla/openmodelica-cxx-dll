@@ -29,6 +29,9 @@ target_include_directories(
 set(
 	LIBRARY_WIN64 ${CMAKE_SOURCE_DIR}/../modelica/Resources/Library/win64
 )
+set(
+	LIBRARY_MINGW64 ${CMAKE_SOURCE_DIR}/../modelica/Resources/Library/mingw64
+)
 
 set_target_properties(
 	mock
@@ -36,4 +39,12 @@ set_target_properties(
 	RUNTIME_OUTPUT_DIRECTORY_DEBUG ${LIBRARY_WIN64}
 	RUNTIME_OUTPUT_DIRECTORY_RELEASE ${LIBRARY_WIN64}
 	RUNTIME_OUTPUT_DIRECTORY_RELWITHDEBINFO ${LIBRARY_WIN64}
+)
+
+set(MINGW64_BIN ${OPENMODELICA_HOME}/tools/msys/mingw64/bin)
+
+add_custom_target(
+	mock_def ALL
+	COMMAND ${MINGW64_bin}/gendef
+	DEPENDS mock
 )
